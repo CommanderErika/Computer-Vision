@@ -73,7 +73,7 @@ Para criar um modelo personalizados iremos baixar os arquivo do YOLOv4 como fize
 ## Download pre-treined weights to train the model
 
 `# Baixando pesos pre-treinados do Yolo`
-> `!wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137`
+> `wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137`
 
 ## Dataset and Labels
 
@@ -81,4 +81,75 @@ Agora que fizemos alguns pequenos preparativos vamos começar a trabalhar em cim
 
 Dentro da pasta darknet será criado uma pasta chamada dataset, onde irá conter todos os nosso arquivos e as imagens necessárias para o nosso treinamento. Na figura a seguir motra como fica a arquitetura dos arquivos para melhor entendimentos:
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+![1](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/1.png?raw=true)
+
+**O dataset pode ser encontrado nesse link: http://web.mit.edu/torralba/www/indoor.html**
+
+`# Criando o nosso diretório dataset`
+
+> `mkdir dataset`
+
+Agora que criamos o nosso diretório dataset, será criado dois diretórios. Esses dois novos diretórios são para organizar as imagens e as labels, sendo que um diretório que será para as imagens de treino e outro diretório será para as imagens de validação. Ao criar esses dois diretórios, coloque as imagens dentro de cada um dos diretórios.
+
+Para esse projeto será utilizado cerca de 100 imagens, então 90% das imagens serão para treino e os outros 10% para validação.
+
+* Total de imagens - 100 imagens.
+* Treino - 90 imagens.
+* Validação - 10 imagens.
+
+`mkdir dataset/train
+mkdir dataset/validation`
+
+### Creating Labels
+
+Para gerar as labels de cada um dos objetos na imagem foi utilizado um programa chamado labelImage. Para criar cada uma das BoudingBoxes bastar usar a opção de criar 'RectBox' do labelImg e em seguida colocar cada tag da classe. Ao fazer isso para cada uma as classes existentem na imagem basta salvar todo o processo no botão 'Save', lembrando que antes de salvar devemos por o arquivo no tipo 'Yolo'.
+
+![LabelImg](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/4.png?raw=true)
+
+Note que quando salvarmos o arquivo, será erado um arquivo de tipo .txt com o mesmo nome que a imagem.
+
+**É possivel encontrar e baixar o labelImg no link: https://github.com/tzutalin/labelImg**
+
+## Generating train.txt and train.txt files
+
+Esses arquivos (train.txt e o test.txt) são usados para dizer ao Yolov4 onde é o diretorio das nossas imagens e quais são os nomes das imagens. Aqui abaixo pe possivel ver um exemplo de arquivo .txt para o train e test.
+
+![Train txt](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/2.png?raw=true)
+![Test txt](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/3.png?raw=true)
+
+`# Gerando o arquivo train.txt
+import os
+os.getcwd()
+collection = 'dataset/teste'
+
+file = open('dataset/teste.txt', "w+")
+
+for filename in os.listdir(collection):
+  if(filename[-3:] != 'txt'):
+    file.write('dataset/teste/' + filename + '\n')
+
+file.close()`
+
+`# Gerando os arquivos test.txt
+os.getcwd()
+collection = 'dataset/validation'
+
+file = open('dataset/test.txt', "w+")
+
+for filename in os.listdir(collection):
+  if(filename[-3:] != 'txt'):
+    file.write('dataset/test/' + filename + '\n')
+
+file.close()`
+
+## File .data and .names
+
+Agora que fizemos os ultimos arquivos .txt restante, vamos criar os arquivos .data e .names. O arquivo .data vai conter informaçõe sobre os diretorios para o Yolov4, enquanto o arquivo .names vai conter informaçõs sobre os nomes das classes.
+
+**Arquivo .names**
+![Train txt](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/5.png?raw=true)
+
+**Arquivo .data**
+![Train txt](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/6.png?raw=true)
+
+
