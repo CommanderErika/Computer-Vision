@@ -70,3 +70,15 @@ Agora iremos fazer o passo a passo de como fazer um treinamento com classes pers
 
 Para criar um modelo personalizados iremos baixar os arquivo do YOLOv4 como fizemos em etapas anteriores e faremos o make do arquivo, e em seguida iremos baixar um peso pre-treinado feito para fazer treinamento de modelos.
 
+## Download pre-treined weights to train the model
+
+`# Baixando pesos pre-treinados do Yolo`
+> `!wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137`
+
+## Dataset and Labels
+
+Agora que fizemos alguns pequenos preparativos vamos começar a trabalhar em cima do nosso dataset. Para esse projeto foi utilziado o dataset do MIT Indoor, como há varias imagens referentes a lugares fechados, iremos utilziar apenas as imagens referentes à banheiros, em especial serão criadas três classes: bath (banheira), sink (pia), e toilet (vazo sanitário), e para cada uma dessas classes será criada uma label na imagem.
+
+Dentro da pasta darknet será criado uma pasta chamada dataset, onde irá conter todos os nosso arquivos e as imagens necessárias para o nosso treinamento. Na figura a seguir motra como fica a arquitetura dos arquivos para melhor entendimentos:
+
+![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
