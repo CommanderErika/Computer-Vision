@@ -177,6 +177,10 @@ Dentro do arquivo .cfg faça as seguintes mudanças:
 
 ## Predicting
 
+`img_path = "dataset/room30.jpg"`
+
+`./darknet detector test dataset/classes.data dataset/yolov4-custom.cfg dataset/yolov4-custom_best.weights {img_path} -dont-show`
+
 ![Examples](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/8.png?raw=true)
 
 ![Examples](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/9.png?raw=true)
