@@ -60,3 +60,13 @@ Agora iremos fazer o download do Yolov4 direto do repositorio. Em seguida será 
 After doing all this steps we can detect any class with COCO dataset
 
 # **Creating custom model with YOLOv4**
+
+Agora iremos fazer o passo a passo de como fazer um treinamento com classes personalizadas. Para isso é necessário fazer a criação/alteração de alguns arquivos importantes para o nosso treinamento, eles são:
+
+* Dados customizados com suas respectivas labels (as bounding boxes).
+* Arquivo .cfg onde irá conter a estrutura do modelo de treinamento.
+* Arquivos .data e .names, onde o .data irá conter as informações sobre os diretorios das imagens (tanto de validação como de treinamento), os pesos, e até mesmo o diretorio do nosso arquivo .names, e o arquivo .names irá conter as classes existentes para esse treinamento.
+* Arquivos train.txt e o test.txt, que são os arquivos que indicam quais são os nomes das nossas imagens e os respectivos diretorios. Esses arquivos também são informados no arquivo .data.
+
+Para criar um modelo personalizados iremos baixar os arquivo do YOLOv4 como fizemos em etapas anteriores e faremos o make do arquivo, e em seguida iremos baixar um peso pre-treinado feito para fazer treinamento de modelos.
+
