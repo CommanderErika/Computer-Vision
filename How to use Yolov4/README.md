@@ -118,6 +118,7 @@ Esses arquivos (train.txt e o test.txt) são usados para dizer ao Yolov4 onde é
 ![Test txt](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/3.png?raw=true)
 
 `# Gerando o arquivo train.txt
+
 import os
 os.getcwd()
 collection = 'dataset/teste'
@@ -131,6 +132,7 @@ for filename in os.listdir(collection):
 file.close()`
 
 `# Gerando os arquivos test.txt
+
 os.getcwd()
 collection = 'dataset/validation'
 
@@ -147,9 +149,34 @@ file.close()`
 Agora que fizemos os ultimos arquivos .txt restante, vamos criar os arquivos .data e .names. O arquivo .data vai conter informaçõe sobre os diretorios para o Yolov4, enquanto o arquivo .names vai conter informaçõs sobre os nomes das classes.
 
 **Arquivo .names**
-![Train txt](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/5.png?raw=true)
+
+![Names](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/5.png?raw=true)
 
 **Arquivo .data**
-![Train txt](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/6.png?raw=true)
 
+![Data](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/6.png?raw=true)
 
+## .cfg file
+
+Por fim, o ultimo arquivo que temos que criar o .cfg. Esse tipo de arquivo contém as informações referentes a rede, e as possiveis configurações que podem ser feitas nela. Para facilitar sugiro pegar o arquivo coco.cfg na pasta cfg do darknet, e em seguida será feita umas pequenas modificações simples para se adaptar a nossas classes.
+
+Dentro do arquivo .cfg faça as seguintes mudanças:
+
+* max_batches = 2000 * (Número de classes)
+* steps = max_batches * 0.8, max_batches * 0.9
+* Em cada camada Yolo altere o valor classes = Número de classes
+* Antes de cada camada Yolo, altere o filtro da camada convolucional para filters = (Número de classes + 5) * 3
+
+## Our dataset
+
+![Examples](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/7.png?raw=true)
+
+## Training our model
+
+`./darknet detector train dataset/classes.data dataset/yolov4-custom.cfg yolov4.conv.137 -dont_show -map`
+
+## Predicting
+
+![Examples](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/8.png?raw=true)
+
+![Examples](https://github.com/CommanderErika/Computer-Vision/blob/main/How%20to%20use%20Yolov4/yolov4%20tutorial/9.png?raw=true)
