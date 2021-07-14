@@ -1,0 +1,13 @@
+dataset/validation/99.jpg
+dataset/validation/104.jpg
+dataset/validation/95.jpg
+dataset/validation/96.jpg
+dataset/validation/98.jpg
+dataset/validation/97.jpg
+dataset/validation/93.jpg
+dataset/validation/102.jpg
+dataset/validation/94.jpg
+dataset/validation/92.jpg
+dataset/validation/103.jpg
+dataset/validation/101.jpg
+dataset/validation/100.jpg
